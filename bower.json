@@ -7,8 +7,8 @@
     "Neylor Ohmaly <nohros.ceo@gmail.com>"
   ],
   "main": [
-    "src/nsPopover.js",
-    "sass/ns-popover.scss"
+    "bin/nsPopover.min.js",
+    "bin/nsPopover.css"
   ],
   "keywords": [
     "angularjs",
