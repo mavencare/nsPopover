@@ -82,7 +82,7 @@ angular ``$http`` service and cached (content will not be loaded if it is alread
 can be loaded through ``path`` to external html template or ``<script>`` tag with ``text\ng-template``.
 
 ```javascript
-<script type="text\ng-template" id="templateId">
+<script type="text/ng-template" id="templateId">
   <h1>Template heading</h1>
   <p>Some content</p>
 </script>
@@ -102,13 +102,13 @@ DOM element can trigger, default: ``click``.
 ### ``ns-popover-timeout {Number}``
 
 The ``ns-popover-timeout`` specify the time to wait before closing the popover and after the mouseout event is
-triggered by the popover.
+triggered by the popover, default 1.5 seconds, use -1 to disable to timeout.
 
 ### ``ns-popover-placement {String}``
 
 Specifies how to position the popover relative to the triggering element. The placement attribute has the given
-syntax: [position] [alignment]. The [position] parameter specifies the position - top, left, right, position - of
-the popover, and the alignment defines the alignment of the popover - center, left, right. The list above shows
+syntax: [position]|[alignment]. The [position] parameter specifies the position (top/right/bottom/left) of
+the popover, and the alignment defines the alignment of the popover (left/center/right). The list below shows
 the possible combinations of [position] and [alignment].
 
 Position | Alignment | Description
@@ -126,10 +126,9 @@ right | center | The popover will be positioned on the right side of the trigger
 right | top | The popover will be positioned on the right side of the triggering element and its top will be aligned with the top of the triggering element.
 right | bottom | The popover will be positioned on the right side of the triggering element and its bottom will be aligned with the bottom of the triggering element.
 
-### ``ns-popover-hide-on-click {Boolean}``
+### `ns-popover-hide-on-inside-click {Boolean}`
 
-The ``ns-popover-hide-on-click`` specify whether to close the popover when clicking on it, default: ``true``. This
-allows for element-targeted closing of the popover (e.g via a close button within the popover element).
+The `ns-popover-hide-on-inside-click` attribute specifies whether or not to close the popover when clicking on it (or an element inside of it). Setting this to false allows for element-targeted closing of the popover (i.e. a close button _inside_ the popover). Defaults to `false`.
 
 ### ``ns-popover-mouse-relative {{String}}``
 
