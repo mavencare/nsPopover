@@ -373,6 +373,37 @@
                 return;
               }
 
+                // Load the template and compile the popover.
+                $q
+                .when(loadTemplate(options.template, options.plain))
+                .then(function(template) {
+                    if (angular.isObject(template)) {
+                        template = angular.isString(template.data) ?
+                            template.data : ''
+                        ;
+                    }
+
+                    // Set the popover element HTML.
+                    $popover.html(template);
+
+                    // Add the "theme" class to the element.
+                    if (options.theme) {
+                        $popover.addClass(options.theme);
+                    }
+
+                    // Compile the element.
+                    $compile($popover)(scope);
+
+                    // Cache the triangle element (works in ie8+).
+                    $triangle = $el(
+                        $popover[0].querySelectorAll('.triangle')
+                    );
+
+                    // Append it to the DOM
+                    $container.append($popover);
+                })
+                ;
+
               $timeout.cancel(displayer_.id_);
 
               if (!isDef(delay)) {
@@ -545,37 +576,6 @@
               elm.off(options.trigger, display);
             }
           }
-
-          // Load the template and compile the popover.
-          $q
-            .when(loadTemplate(options.template, options.plain))
-            .then(function(template) {
-              if (angular.isObject(template)) {
-                template = angular.isString(template.data) ?
-                  template.data : ''
-                ;
-              }
-
-              // Set the popover element HTML.
-              $popover.html(template);
-
-              // Add the "theme" class to the element.
-              if (options.theme) {
-                $popover.addClass(options.theme);
-              }
-
-              // Compile the element.
-              $compile($popover)(scope);
-
-              // Cache the triangle element (works in ie8+).
-              $triangle = $el(
-                $popover[0].querySelectorAll('.triangle')
-              );
-
-              // Append it to the DOM
-              $container.append($popover);
-            })
-          ;
         }
       };
     }
