@@ -453,8 +453,10 @@
                     elm.on('click', buttonClickHandler);
                   }
 
-                  // Call the open callback
-                  options.onOpen(scope)();
+                  if (options.onOpen(scope)) {
+                    // Call the open callback
+                    options.onOpen(scope)();
+                  }
                 }, delay*1000);
               },
 
@@ -494,8 +496,10 @@
                     $popover.css('display', 'none');
                     removeEventListeners();
 
-                    // Call the close callback
-                    options.onClose(scope)();
+                    if (options.onClose(scope)) {
+                      // Call the close callback
+                      options.onClose(scope)();
+                    }
                   }, delay*1000);
                 }
               },
